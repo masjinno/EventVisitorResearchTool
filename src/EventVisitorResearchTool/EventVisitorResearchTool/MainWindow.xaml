@@ -10,13 +10,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
             <!-- 解析エリア -->
             <Grid DockPanel.Dock="Bottom">
                 <WrapPanel>
-                    <GroupBox Header="どの演奏会まで">
+                    <GroupBox Header="どのイベントまで">
                         <ComboBox Name="TargetConcertComboBox"/>
                     </GroupBox>
                     <GroupBox Header="会場を絞る"/>
@@ -37,23 +37,25 @@
                             <GradientStop Color="#FFFFFFC8" Offset="1"/>
                         </LinearGradientBrush>
                     </StackPanel.Background>
-                    <TextBlock Text="来場者情報"
-                           FontSize="16"/>
+                    <TextBlock Text="来場者情報" FontSize="16" FontWeight="Bold"/>
                     <DockPanel Margin="5">
-                        <TextBlock DockPanel.Dock="Left"
-                               Text="Input CSV File: "/>
-                        <Button DockPanel.Dock="Right"
-                            Content="Load"/>
-                        <TextBox Name="InputCsvFileTextBox"
-                             Margin="5,0"/>
+                        <TextBlock DockPanel.Dock="Left" Text="Input CSV File: "/>
+                        <Button DockPanel.Dock="Right" Content="Load"/>
+                        <TextBox Name="InputCsvFileTextBox" Margin="5,0"/>
                     </DockPanel>
-                    <ScrollViewer HorizontalScrollBarVisibility="Auto"
-                              VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <DataGrid Name="VisitorDataGrid"/>
                     </ScrollViewer>
                 </StackPanel>
                 <!-- 境界線 -->
-                <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Width="8"/>
+                <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Width="5">
+                    <GridSplitter.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE0FFE0" Offset="0"/>
+                            <GradientStop Color="#FFA0FFA0" Offset="1"/>
+                        </LinearGradientBrush>
+                    </GridSplitter.Background>
+                </GridSplitter>
                 <!-- 演奏会情報 -->
                 <StackPanel Grid.Column="2">
                     <StackPanel.Background>
@@ -62,44 +64,31 @@
                             <GradientStop Color="#FFC8FFFF" Offset="1"/>
                         </LinearGradientBrush>
                     </StackPanel.Background>
-                    <TextBlock Text="演奏会情報" FontSize="16"/>
+                    <TextBlock Text="イベント情報" FontSize="16" FontWeight="Bold"/>
                     <DockPanel Margin="5">
-                        <TextBlock DockPanel.Dock="Left"
-                               Text="Import (CSV): "/>
-                        <Button DockPanel.Dock="Right"
-                            Content="Import"/>
-                        <TextBox Name="ImportConcertTextBox"
-                             Margin="5,0"/>
+                        <TextBlock DockPanel.Dock="Left" Text="Import (CSV): "/>
+                        <Button DockPanel.Dock="Right" Content="Import"/>
+                        <TextBox Name="ImportConcertTextBox" Margin="5,0"/>
                     </DockPanel>
                     <DockPanel Margin="5">
-                        <TextBlock DockPanel.Dock="Left"
-                               Text="Export (CSV): "/>
-                        <Button DockPanel.Dock="Right"
-                            Content="Export"/>
-                        <TextBox Name="A"
-                             Margin="5,0"/>
+                        <TextBlock DockPanel.Dock="Left" Text="Export (CSV): "/>
+                        <Button DockPanel.Dock="Right" Content="Export"/>
+                        <TextBox Name="A" Margin="5,0"/>
                     </DockPanel>
-                    <ScrollViewer HorizontalScrollBarVisibility="Auto"
-                              VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <DataGrid Name="ConcertDataGrid"/>
                     </ScrollViewer>
                 </StackPanel>
             </Grid>
         </DockPanel>
         <!-- 境界線 -->
-        <GridSplitter Grid.Row="1" VerticalAlignment="Stretch" Height="8"/>
+        <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Height="5" Background="#FFFFC88C"/>
         <!-- 結果 -->
         <DockPanel Grid.Row="2">
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
                 <TextBlock Text="人数は" VerticalAlignment="Bottom"/>
-                <TextBlock
-                    Name="TotalVisitorNumTextBlock"
-                    Text="○○人"
-                    Margin="10,0"
-                    FontSize="15"
-                    VerticalAlignment="Bottom"/>
-                <TextBlock Text="です。"
-                       VerticalAlignment="Bottom"/>
+                <TextBlock Name="TotalVisitorNumTextBlock" Text="○○人" Margin="10,0" FontSize="18" VerticalAlignment="Bottom"/>
+                <TextBlock Text="です。" VerticalAlignment="Bottom"/>
             </StackPanel>
             <DockPanel>
                 <DockPanel DockPanel.Dock="Bottom" Margin="5">
